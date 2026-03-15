@@ -1,0 +1,107 @@
+<Window x:Class="MiniCadManager.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:MiniCadManager.Wpf.ViewModels"
+        mc:Ignorable="d"
+        Title="Mini CAD Object Manager" Height="600" Width="900"
+        Background="{DynamicResource WindowBackground}"
+        TextElement.Foreground="{DynamicResource TextForeground}">
+    
+    <Window.DataContext>
+        <viewmodels:MainViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Top Toolbar -->
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Load Data" Command="{Binding LoadDataCommand}"/>
+            <Button Content="Remove Duplicates" Command="{Binding RemoveDuplicatesCommand}"/>
+            <Button Content="Export" Command="{Binding ExportCommand}"/>
+            <Button Content="Light/Dark Mode" Command="{Binding ToggleThemeCommand}" HorizontalAlignment="Right" Margin="50,5,5,5"/>
+        </StackPanel>
+
+        <!-- Filter/Search -->
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="{DynamicResource PanelBackground}" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Search by Name:" Margin="0,0,10,0"/>
+                <TextBox Width="150" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,20,0" Padding="5"/>
+                
+                <TextBlock Text="Filter by Type:" Margin="0,0,10,0"/>
+                <ComboBox Width="120" ItemsSource="{Binding AvailableTypes}" SelectedItem="{Binding SelectedType}" Padding="5"/>
+
+                <TextBlock Text="Total:" Margin="30,0,5,0" FontWeight="Bold"/>
+                <TextBlock Text="{Binding TotalObjects}" FontWeight="Bold"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Data Grid -->
+        <DataGrid Grid.Row="2" Grid.Column="0" 
+                  ItemsSource="{Binding CadObjects}" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True"
+                  Background="{DynamicResource PanelBackground}"
+                  RowBackground="{DynamicResource PanelBackground}"
+                  HeadersVisibility="Column"
+                  Margin="0,0,10,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="100"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="100"/>
+                <DataGridTextColumn Header="Layer" Binding="{Binding Layer}" Width="100"/>
+                <DataGridTextColumn Header="X" Binding="{Binding X, StringFormat={}{0:F2}}" Width="70"/>
+                <DataGridTextColumn Header="Y" Binding="{Binding Y, StringFormat={}{0:F2}}" Width="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Sidebar / Results -->
+        <Border Grid.Row="2" Grid.Column="1" Background="{DynamicResource PanelBackground}" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1" CornerRadius="5" Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <Button Grid.Row="0" Content="Optimize Route" Command="{Binding OptimizeRouteCommand}" Margin="0,0,0,20"/>
+                
+                <TextBlock Grid.Row="1" Text="Results:" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBox Grid.Row="2" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding OptimizationResultText}" Background="Transparent" Foreground="{DynamicResource TextForeground}" BorderThickness="0" />
+            </Grid>
+        </Border>
+
+        <!-- Canvas for Preview (Optional feature) -->
+        <Border Grid.Row="3" Grid.ColumnSpan="2" Height="150" Background="{DynamicResource PanelBackground}" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1" Margin="0,10,0,0" ClipToBounds="True">
+            <ItemsControl ItemsSource="{Binding CadObjects}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                        <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Width="5" Height="5" Fill="Red" ToolTip="{Binding Name}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+    </Grid>
+</Window>

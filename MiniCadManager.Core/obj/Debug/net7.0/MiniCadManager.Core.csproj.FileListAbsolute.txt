@@ -1,0 +1,12 @@
+D:\MiniCadManager\MiniCadManager.Core\bin\Debug\net7.0\MiniCadManager.Core.deps.json
+D:\MiniCadManager\MiniCadManager.Core\bin\Debug\net7.0\MiniCadManager.Core.dll
+D:\MiniCadManager\MiniCadManager.Core\bin\Debug\net7.0\MiniCadManager.Core.pdb
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\MiniCadManager.Core.csproj.AssemblyReference.cache
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\MiniCadManager.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\MiniCadManager.Core.AssemblyInfoInputs.cache
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\MiniCadManager.Core.AssemblyInfo.cs
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\MiniCadManager.Core.csproj.CoreCompileInputs.cache
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\MiniCadManager.Core.dll
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\refint\MiniCadManager.Core.dll
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\MiniCadManager.Core.pdb
+D:\MiniCadManager\MiniCadManager.Core\obj\Debug\net7.0\ref\MiniCadManager.Core.dll
