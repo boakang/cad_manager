@@ -38,12 +38,10 @@ namespace MiniCadManager.Core.Services
                 if (parts.Length < 6) continue;
 
                 if (int.TryParse(parts[0].Trim(), out int id) &&
-                    double.TryParse(parts[4].Trim(), System.Globalization.NumberStyles.Float,
-                        System.Globalization.CultureInfo.InvariantCulture, out double x) &&
-                    double.TryParse(parts[5].Trim(), System.Globalization.NumberStyles.Float,
-                        System.Globalization.CultureInfo.InvariantCulture, out double y))
+                    double.TryParse(parts[4].Trim(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double x) &&
+                    double.TryParse(parts[5].Trim(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double y))
                 {
-                    objects.Add(new CadObject
+                    var cadObj = new CadObject
                     {
                         Id = id,
                         Name = parts[1].Trim(),
@@ -51,7 +49,13 @@ namespace MiniCadManager.Core.Services
                         Layer = parts[3].Trim(),
                         X = x,
                         Y = y
-                    });
+                    };
+
+                    if (parts.Length > 6 && double.TryParse(parts[6].Trim(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double endX)) cadObj.EndX = endX;
+                    if (parts.Length > 7 && double.TryParse(parts[7].Trim(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double endY)) cadObj.EndY = endY;
+                    if (parts.Length > 8 && double.TryParse(parts[8].Trim(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double radius)) cadObj.Radius = radius;
+
+                    objects.Add(cadObj);
                 }
             }
             return objects;
