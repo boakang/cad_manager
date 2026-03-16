@@ -1,12 +1,47 @@
 [
-  { "Id": 1, "Name": "L1", "Type": "Line", "Layer": "0", "X": 10.5, "Y": 20.0 },
-  { "Id": 2, "Name": "C1", "Type": "Circle", "Layer": "Shapes", "X": 50.0, "Y": 50.0 },
-  { "Id": 3, "Name": "T1", "Type": "Text", "Layer": "Notes", "X": 15.0, "Y": 22.0 },
-  { "Id": 4, "Name": "L2", "Type": "Line", "Layer": "0", "X": 80.0, "Y": 10.0 },
-  { "Id": 5, "Name": "L3", "Type": "Line", "Layer": "Shapes", "X": 10.5, "Y": 20.0 },
-  { "Id": 6, "Name": "C2", "Type": "Circle", "Layer": "Shapes", "X": 55.0, "Y": 48.0 },
-  { "Id": 7, "Name": "T2", "Type": "Text", "Layer": "Notes", "X": 90.0, "Y": 90.0 },
-  { "Id": 8, "Name": "L4", "Type": "Line", "Layer": "0", "X": 5.0, "Y": 5.0 },
-  { "Id": 9, "Name": "C3", "Type": "Circle", "Layer": "0", "X": 100.0, "Y": 100.0 },
-  { "Id": 10, "Name": "L5", "Type": "Line", "Layer": "Shapes", "X": 82.0, "Y": 12.0 }
+  { "Id": 1, "Name": "House-Base", "Type": "Line", "Layer": "Structure", "X": 100.0, "Y": 300.0, "EndX": 300.0, "EndY": 300.0 },
+  { "Id": 2, "Name": "House-Left", "Type": "Line", "Layer": "Structure", "X": 100.0, "Y": 300.0, "EndX": 100.0, "EndY": 150.0 },
+  { "Id": 3, "Name": "House-Right", "Type": "Line", "Layer": "Structure", "X": 300.0, "Y": 300.0, "EndX": 300.0, "EndY": 150.0 },
+  { "Id": 4, "Name": "House-Top", "Type": "Line", "Layer": "Structure", "X": 100.0, "Y": 150.0, "EndX": 300.0, "EndY": 150.0 },
+  
+  { "Id": 5, "Name": "Roof-Left", "Type": "Line", "Layer": "Roof", "X": 100.0, "Y": 150.0, "EndX": 200.0, "EndY": 50.0 },
+  { "Id": 6, "Name": "Roof-Right", "Type": "Line", "Layer": "Roof", "X": 300.0, "Y": 150.0, "EndX": 200.0, "EndY": 50.0 },
+  { "Id": 7, "Name": "Chimney-Left", "Type": "Line", "Layer": "Roof", "X": 250.0, "Y": 100.0, "EndX": 250.0, "EndY": 30.0 },
+  { "Id": 8, "Name": "Chimney-Right", "Type": "Line", "Layer": "Roof", "X": 270.0, "Y": 120.0, "EndX": 270.0, "EndY": 30.0 },
+  { "Id": 9, "Name": "Chimney-Top", "Type": "Line", "Layer": "Roof", "X": 250.0, "Y": 30.0, "EndX": 270.0, "EndY": 30.0 },
+  { "Id": 10, "Name": "Chimney-Smoke", "Type": "Circle", "Layer": "Roof", "X": 260.0, "Y": 15.0, "Radius": 8.0 },
+  
+  { "Id": 11, "Name": "Door-Left", "Type": "Line", "Layer": "Architecture", "X": 140.0, "Y": 300.0, "EndX": 140.0, "EndY": 220.0 },
+  { "Id": 12, "Name": "Door-Right", "Type": "Line", "Layer": "Architecture", "X": 180.0, "Y": 300.0, "EndX": 180.0, "EndY": 220.0 },
+  { "Id": 13, "Name": "Door-Top", "Type": "Line", "Layer": "Architecture", "X": 140.0, "Y": 220.0, "EndX": 180.0, "EndY": 220.0 },
+  { "Id": 14, "Name": "Door-Knob", "Type": "Circle", "Layer": "Architecture", "X": 172.0, "Y": 260.0, "Radius": 2.5 },
+  
+  { "Id": 15, "Name": "Window-T", "Type": "Line", "Layer": "Architecture", "X": 220.0, "Y": 200.0, "EndX": 270.0, "EndY": 200.0 },
+  { "Id": 16, "Name": "Window-B", "Type": "Line", "Layer": "Architecture", "X": 220.0, "Y": 250.0, "EndX": 270.0, "EndY": 250.0 },
+  { "Id": 17, "Name": "Window-L", "Type": "Line", "Layer": "Architecture", "X": 220.0, "Y": 200.0, "EndX": 220.0, "EndY": 250.0 },
+  { "Id": 18, "Name": "Window-R", "Type": "Line", "Layer": "Architecture", "X": 270.0, "Y": 200.0, "EndX": 270.0, "EndY": 250.0 },
+  { "Id": 19, "Name": "Window-Cross1", "Type": "Line", "Layer": "Architecture", "X": 245.0, "Y": 200.0, "EndX": 245.0, "EndY": 250.0 },
+  { "Id": 20, "Name": "Window-Cross2", "Type": "Line", "Layer": "Architecture", "X": 220.0, "Y": 225.0, "EndX": 270.0, "EndY": 225.0 },
+  
+  { "Id": 21, "Name": "Sun", "Type": "Circle", "Layer": "Environment", "X": 450.0, "Y": 60.0, "Radius": 30.0 },
+  { "Id": 22, "Name": "Sun-Ray1", "Type": "Line", "Layer": "Environment", "X": 450.0, "Y": 20.0, "EndX": 450.0, "EndY": 5.0 },
+  { "Id": 23, "Name": "Sun-Ray2", "Type": "Line", "Layer": "Environment", "X": 490.0, "Y": 60.0, "EndX": 510.0, "EndY": 60.0 },
+  { "Id": 24, "Name": "Sun-Ray3", "Type": "Line", "Layer": "Environment", "X": 450.0, "Y": 100.0, "EndX": 450.0, "EndY": 115.0 },
+  { "Id": 25, "Name": "Sun-Ray4", "Type": "Line", "Layer": "Environment", "X": 410.0, "Y": 60.0, "EndX": 390.0, "EndY": 60.0 },
+  
+  { "Id": 26, "Name": "Fence1-P", "Type": "Line", "Layer": "Landscape", "X": 40.0, "Y": 300.0, "EndX": 40.0, "EndY": 260.0 },
+  { "Id": 27, "Name": "Fence2-P", "Type": "Line", "Layer": "Landscape", "X": 70.0, "Y": 300.0, "EndX": 70.0, "EndY": 260.0 },
+  { "Id": 28, "Name": "Fence-Rail", "Type": "Line", "Layer": "Landscape", "X": 30.0, "Y": 280.0, "EndX": 80.0, "EndY": 280.0 },
+  
+  { "Id": 29, "Name": "Fence3-P", "Type": "Line", "Layer": "Landscape", "X": 330.0, "Y": 300.0, "EndX": 330.0, "EndY": 260.0 },
+  { "Id": 30, "Name": "Fence4-P", "Type": "Line", "Layer": "Landscape", "X": 360.0, "Y": 300.0, "EndX": 360.0, "EndY": 260.0 },
+  { "Id": 31, "Name": "Fence5-P", "Type": "Line", "Layer": "Landscape", "X": 390.0, "Y": 300.0, "EndX": 390.0, "EndY": 260.0 },
+  { "Id": 32, "Name": "Fence-Rail2", "Type": "Line", "Layer": "Landscape", "X": 320.0, "Y": 280.0, "EndX": 400.0, "EndY": 280.0 },
+  
+  { "Id": 33, "Name": "Title1", "Type": "Text", "Layer": "Annotation", "X": 200.0, "Y": 350.0 },
+  { "Id": 34, "Name": "Title2", "Type": "Text", "Layer": "Annotation", "X": 25.0, "Y": 20.0 },
+  
+  { "Id": 35, "Name": "Dupe-Line", "Type": "Line", "Layer": "Structure", "X": 100.0, "Y": 300.0, "EndX": 300.0, "EndY": 300.0 },
+  { "Id": 36, "Name": "Dupe-Line2", "Type": "Line", "Layer": "Structure", "X": 100.0, "Y": 150.0, "EndX": 300.0, "EndY": 150.0 },
+  { "Id": 37, "Name": "Dupe-Circ", "Type": "Circle", "Layer": "Roof", "X": 260.0, "Y": 15.0, "Radius": 8.0 }
 ]

@@ -17,6 +17,7 @@ namespace MiniCadManager.Wpf.ViewModels
         private readonly FileLoaderService _fileLoaderService;
         private readonly SearchService _searchService;
         private readonly RouteOptimizer _routeOptimizer;
+        private readonly DxfExportService _dxfExportService;
 
         private List<CadObject> _allObjects = new();
 
@@ -25,8 +26,10 @@ namespace MiniCadManager.Wpf.ViewModels
             _fileLoaderService = new FileLoaderService();
             _searchService = new SearchService();
             _routeOptimizer = new RouteOptimizer();
+            _dxfExportService = new DxfExportService();
 
             LoadDataCommand = new RelayCommand(_ => ExecuteLoadData());
+            CalculateGeometryCommand = new RelayCommand(_ => ExecuteCalculateGeometry(), _ => CadObjects.Any());
             OptimizeRouteCommand = new RelayCommand(_ => ExecuteOptimizeRoute(), _ => CadObjects.Any());
             RemoveDuplicatesCommand = new RelayCommand(_ => ExecuteRemoveDuplicates(), _ => CadObjects.Any());
             ExportCommand = new RelayCommand(_ => ExecuteExport(), _ => CadObjects.Any());
@@ -82,6 +85,7 @@ namespace MiniCadManager.Wpf.ViewModels
         // Commands
 
         public ICommand LoadDataCommand { get; }
+        public ICommand CalculateGeometryCommand { get; }
         public ICommand OptimizeRouteCommand { get; }
         public ICommand RemoveDuplicatesCommand { get; }
         public ICommand ExportCommand { get; }
@@ -139,6 +143,18 @@ namespace MiniCadManager.Wpf.ViewModels
                                      $"Optimized Distance: {result.OptimizedDistance:F2}";
         }
 
+        private void ExecuteCalculateGeometry()
+        {
+            if (!CadObjects.Any()) return;
+            var bbox = GeometryEngine.CalculateBoundingBox(CadObjects);
+            double area = GeometryEngine.CalculateTotalArea(CadObjects);
+            double perimeter = GeometryEngine.CalculateTotalPerimeter(CadObjects);
+            
+            OptimizationResultText = $"Bounding Box:\n{bbox.MinX:F2},{bbox.MinY:F2} to {bbox.MaxX:F2},{bbox.MaxY:F2}\n" +
+                                     $"Total Area: {area:F2}\n" +
+                                     $"Total Perimeter/Length: {perimeter:F2}";
+        }
+
         private void ExecuteRemoveDuplicates()
         {
             if (!CadObjects.Any()) return;
@@ -159,14 +175,18 @@ namespace MiniCadManager.Wpf.ViewModels
 
             var saveFileDialog = new SaveFileDialog
             {
-                Filter = "JSON files (*.json)|*.json|Text lines (*.txt)|*.txt"
+                Filter = "DXF files (*.dxf)|*.dxf|JSON files (*.json)|*.json|Text lines (*.txt)|*.txt"
             };
 
             if (saveFileDialog.ShowDialog() == true)
             {
                 try
                 {
-                    if (saveFileDialog.FileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                    if (saveFileDialog.FileName.EndsWith(".dxf", StringComparison.OrdinalIgnoreCase))
+                    {
+                        _dxfExportService.Export(CadObjects, saveFileDialog.FileName);
+                    }
+                    else if (saveFileDialog.FileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
                     {
                         _fileLoaderService.ExportToJson(CadObjects, saveFileDialog.FileName);
                     }

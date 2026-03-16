@@ -1,13 +1,13 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="WindowBackground" Color="#1E1E1E"/>
-    <SolidColorBrush x:Key="PanelBackground" Color="#252526"/>
-    <SolidColorBrush x:Key="TextForeground" Color="#D4D4D4"/>
-    <SolidColorBrush x:Key="BorderColor" Color="#3F3F46"/>
-    <SolidColorBrush x:Key="PrimaryAccent" Color="#007ACC"/>
-    <SolidColorBrush x:Key="PrimaryAccentForeground" Color="White"/>
-    <SolidColorBrush x:Key="DisabledBackground" Color="#333333"/>
-    <SolidColorBrush x:Key="DisabledForeground" Color="#777777"/>
-    <SolidColorBrush x:Key="InputBackground" Color="White"/>
-    <SolidColorBrush x:Key="InputForeground" Color="Black"/>
+    <SolidColorBrush x:Key="WindowBackground" Color="#111827"/>
+    <SolidColorBrush x:Key="PanelBackground" Color="#1F2937"/>
+    <SolidColorBrush x:Key="TextForeground" Color="#F9FAFB"/>
+    <SolidColorBrush x:Key="BorderColor" Color="#374151"/>
+    <SolidColorBrush x:Key="PrimaryAccent" Color="#3B82F6"/>
+    <SolidColorBrush x:Key="PrimaryAccentForeground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="DisabledBackground" Color="#374151"/>
+    <SolidColorBrush x:Key="DisabledForeground" Color="#9CA3AF"/>
+    <SolidColorBrush x:Key="InputBackground" Color="#374151"/>
+    <SolidColorBrush x:Key="InputForeground" Color="#F9FAFB"/>
 </ResourceDictionary>
